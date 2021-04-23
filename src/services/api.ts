@@ -2,13 +2,13 @@ import axios from 'axios';
 
 
 const Api = axios.create({
-    baseURL: `https://voxiot.com/`
+    baseURL: process.env.REACT_APP_BASE_API_URL
 });
 
 Api.interceptors.request.use(
 config => {
     debugger
-    config.params = { ...config.params, token: 'cd164cdcee22ba3a0346f95b4f3c13c8' };
+    config.params = { ...config.params, token: process.env.REACT_APP_API_TOKEN };
     return config;
 }, error => {
     return error
